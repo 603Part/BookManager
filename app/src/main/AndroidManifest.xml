@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.book">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -33,6 +35,15 @@
             />
         <activity android:name=".activity.BookDetailsActivity"
             android:label="图书编辑"
+            />
+        <activity android:name=".activity.NoticeActivity"
+            android:label="图书馆公告"
+            />
+        <activity android:name=".activity.BorrowActivity"
+            android:label="图书借阅"
+            />
+        <activity android:name=".activity.ReturnedActivity"
+            android:label="图书归还"
             />
     </application>
 

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="书名"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:textSize="13.5sp"
+        android:layout_marginTop="30dp"
+        />
+    <EditText
+        android:id="@+id/book_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:textColor="@color/textColor"
+        android:textColorHint="@color/tv_second_light_gray"
+        android:textCursorDrawable="@drawable/shp_cursor"
+        android:enabled="false"
+        android:hint="请选择要借阅的书"
+        android:textSize="13.5sp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="作者"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:textSize="13.5sp"
+        android:layout_marginTop="30dp"
+        />
+    <EditText
+        android:id="@+id/book_author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:textColor="@color/textColor"
+        android:textColorHint="@color/tv_second_light_gray"
+        android:textCursorDrawable="@drawable/shp_cursor"
+        android:enabled="false"
+        android:hint="图书的作者"
+        android:textSize="13.5sp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="借阅人"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:textSize="13.5sp"
+        android:layout_marginTop="30dp"
+        />
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:textColor="@color/textColor"
+        android:textColorHint="@color/tv_second_light_gray"
+        android:textCursorDrawable="@drawable/shp_cursor"
+        android:hint="借阅人"
+        android:enabled="false"
+        android:textSize="13.5sp"
+        />
+
+
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:background="@drawable/shp_login"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="确定借阅"
+        android:textColor="@color/white"
+        android:textSize="13sp" />
+
+</LinearLayout>

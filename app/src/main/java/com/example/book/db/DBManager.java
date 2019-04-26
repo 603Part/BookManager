@@ -4,7 +4,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.book.model.User;
+import com.example.book.model.UserBean;
+import com.example.book.model.UserLogin;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -67,31 +68,31 @@ public class DBManager {
 
 
 
-    public static User login(String username, String password) {
-        User user = null;
-        Cursor cursor = manager.rawQuery("SELECT * FROM user WHERE username = '"+username+"' AND password = '"+password+"'",null);
+    public static UserLogin login(String inputName, String password) {
+        UserLogin user = null;
+        Cursor cursor = manager.rawQuery("SELECT * FROM UserRoleView WHERE username = '"+inputName+"' AND password = '"+password+"'",null);
         while(cursor.moveToNext()){
-            String name = cursor.getString(1);
+            String id = cursor.getString(0);
+            String username = cursor.getString(1);
             String pwd = cursor.getString(2);
-            String sex = cursor.getString(3);
-            String phone = cursor.getString(4);
-            String role = cursor.getString(5);
-            String nickname = cursor.getString(7);
-            String status = cursor.getString(8);
-            user = new User();
-            user.setUsername(name);
+            String name = cursor.getString(3);
+            String gender = cursor.getString(4);
+            String phone = cursor.getString(5);
+            String role_name = cursor.getString(6);
+            user = new UserLogin();
+            user.setId(id);
+            user.setUsername(username);
+            user.setName(name);
             user.setPassword(pwd);
-            user.setSex(sex);
+            user.setGender(gender);
             user.setPhone(phone);
-            user.setRole(role);
-            user.setNickname(nickname);
-            user.setStatus(status);
+            user.setRole_name(role_name);
         }
         cursor.close();
         return user;
     }
 
-    public static int insertNewUser(User user) {
+    public static int insertNewUser(UserLogin user) {
         // 先判断有无此用户
         Cursor cursor = manager.rawQuery("select 1 from user where username = '" + user.getUsername() + "' limit 1;", null);
         boolean b = false; // 默认无
@@ -102,7 +103,7 @@ public class DBManager {
             return 1; //用户存在
         }
         try {
-            manager.execSQL("INSERT INTO user values(NULL,'" + user.getUsername() + "','" + user.getPassword() + "','"+user.getSex()+"','"+user.getPhone()+"','用户','','"+user.getNickname()+"','0')");
+
         } catch (Exception e) {
             e.printStackTrace();
             return 2; // 用户不存在但是插入失败
@@ -116,14 +117,13 @@ public class DBManager {
     }
 
 //    UPDATE user SET password = '12534',sex = '0',nickname='a',status='1' WHERE username = 'a2'
-    public static void update(User user) {
-        manager.execSQL("UPDATE user SET password = '"+user.getPassword()+"',sex='"+user.getSex()+"',nickname='"+user.getNickname()+"'" +
-                ",status='"+user.getStatus()+"',phone='"+user.getPhone()+"' where username = '"+user.getUsername()+"'");
+    public static void update(UserLogin user) {
+
     }
 
 
-    public static User findUserByUserName(String username) {
-        User user = null;
+    public static UserLogin findUserByUserName(String username) {
+        UserLogin user = null;
         Cursor cursor = manager.rawQuery("SELECT * FROM user WHERE username = '"+username+"'",null);
         while(cursor.moveToNext()){
             String name = cursor.getString(1);
@@ -133,39 +133,31 @@ public class DBManager {
             String role = cursor.getString(5);
             String nickname = cursor.getString(7);
             String status = cursor.getString(8);
-            user = new User();
+            user = new UserLogin();
             user.setUsername(name);
             user.setPassword(pwd);
-            user.setSex(sex);
-            user.setPhone(phone);
-            user.setRole(role);
-            user.setNickname(nickname);
-            user.setStatus(status);
+
         }
         cursor.close();
         return user;
     }
 
-    public static List<User> getAllUser() {
-        List<User> mList = new ArrayList<>();
-        User user = null;
+    public static List<UserBean> getAllUser() {
+        List<UserBean> mList = new ArrayList<>();
+        UserBean user = null;
         Cursor cursor = manager.rawQuery("SELECT * FROM user",null);
         while(cursor.moveToNext()){
-            String name = cursor.getString(1);
-            String pwd = cursor.getString(2);
-            String sex = cursor.getString(3);
-            String phone = cursor.getString(4);
-            String role = cursor.getString(5);
-            String nickname = cursor.getString(7);
-            String status = cursor.getString(8);
-            user = new User();
-            user.setUsername(name);
-            user.setPassword(pwd);
-            user.setSex(sex);
-            user.setPhone(phone);
-            user.setRole(role);
-            user.setNickname(nickname);
-            user.setStatus(status);
+            String id = cursor.getString(0);
+            String username = cursor.getString(1);
+            String password = cursor.getString(2);
+            String name = cursor.getString(3);
+            String gender = cursor.getString(4);
+            String phone = cursor.getString(5);
+            String role = cursor.getString(6);
+            String status = cursor.getString(7);
+
+            user = new UserBean(id,username,password,name,gender,phone,role,status);
+
             mList.add(user);
         }
         cursor.close();

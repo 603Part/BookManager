@@ -6,4 +6,10 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+
+    <string name="username">用户名:%1$s</string>
+    <string name="nickname">姓名:%1$s</string>
+    <string name="gender">性别:%1$s</string>
+    <string name="role">角色:%1$s</string>
+    <string name="phone">电话:%1$s</string>
 </resources>

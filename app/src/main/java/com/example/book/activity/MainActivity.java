@@ -1,5 +1,6 @@
 package com.example.book.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -9,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,12 +24,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,AdapterView.OnItemClickListener {
 
     private TextView title,role;
 
     private GridView gridView;
     private XBanner banner_1;
+    private String id;
+    private String name;
+    private String roleName;
 
 
     @Override
@@ -35,6 +40,12 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+
+        id = getIntent().getStringExtra("id");
+        name = getIntent().getStringExtra("name");
+        roleName = getIntent().getStringExtra("role");
+        title.setText(name);
+        role.setText(roleName);
         initData();
     }
 
@@ -53,7 +64,7 @@ public class MainActivity extends AppCompatActivity
 
         HomeAdapter homeAdapter = new HomeAdapter(ModuleUtils.getAllModule());
         gridView.setAdapter(homeAdapter);
-
+        gridView.setOnItemClickListener(this);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View headerView = navigationView.getHeaderView(0);
@@ -98,11 +109,17 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
-
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(this, ManagerActivity.class);
+        startActivity(intent);
     }
 }
