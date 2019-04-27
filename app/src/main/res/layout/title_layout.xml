@@ -22,6 +22,7 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="10dp"
         android:textSize="18sp"
+        android:visibility="gone"
         android:textColor="#fff"
         android:text="添加"/>
 

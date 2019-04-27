@@ -85,11 +85,14 @@ public class LoginActivity extends BaseActivity {
         UserLogin login = DBManager.login(edAccount.getText().toString(), edPass.getText().toString());
         if (login != null) {
             Intent intent = new Intent(this, MainActivity.class);
-            intent.putExtra("id",login.getId());
+            intent.putExtra("id", login.getId());
+            intent.putExtra("username", login.getUsername());
             intent.putExtra("name", login.getName());
             intent.putExtra("role", login.getRole_name());
             startActivity(intent);
             finish();
-        }
+        } else {
+            Toast.makeText(this, "用户名或者密码错误", Toast.LENGTH_SHORT).show();
+        } 
     }
 }

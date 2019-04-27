@@ -12,45 +12,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginTop="30dp"
-        android:text="书名"
-        android:textSize="13.5sp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/book_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:enabled="false"
-            android:layout_weight="0.6"
-            android:hint="请选择要借阅的书"
-            android:textColor="@color/textColor"
-            android:textColorHint="@color/tv_second_light_gray"
-            android:textCursorDrawable="@drawable/shp_cursor"
-            android:textSize="13.5sp" />
-
-        <Button
-            android:id="@+id/choose_book"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/shp_login"
-            android:text="选择"
-            android:textColor="@color/white" />
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="30dp"
-        android:text="借阅人"
+        android:text="归还人"
         android:textSize="13.5sp" />
 
     <LinearLayout
@@ -67,7 +29,7 @@
             android:layout_weight="0.6"
             android:clickable="true"
             android:enabled="false"
-            android:hint="请选择借阅人"
+            android:hint="归还人"
             android:textColor="@color/textColor"
             android:textColorHint="@color/tv_second_light_gray"
             android:textCursorDrawable="@drawable/shp_cursor"
@@ -83,6 +45,52 @@
             android:textColor="@color/white" />
 
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/book_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="30dp"
+            android:text="书名"
+            android:textSize="13.5sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/book_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:enabled="false"
+                android:layout_weight="0.6"
+                android:hint="请选择要借阅的书"
+                android:textColor="@color/textColor"
+                android:textColorHint="@color/tv_second_light_gray"
+                android:textCursorDrawable="@drawable/shp_cursor"
+                android:textSize="13.5sp" />
+
+            <Button
+                android:id="@+id/choose_book"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shp_login"
+                android:text="选择"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/save"
@@ -91,7 +99,7 @@
         android:layout_margin="10dp"
         android:background="@drawable/shp_login"
         android:gravity="center"
-        android:text="确定借阅"
+        android:text="确定归还"
         android:textColor="@color/white"
         android:textSize="13sp" />
 

@@ -15,37 +15,34 @@ import com.example.book.model.BookBean;
 
 import java.util.List;
 
-public class BookManagerActivity extends BaseActivity implements View.OnClickListener,AdapterView.OnItemClickListener{
+public class BookSearchManagerActivity extends BaseActivity implements View.OnClickListener,AdapterView.OnItemClickListener{
 
     private TextView title,addUser;
     private ListView manager;
-    private List<BookBean> allBook;
+    private List<BookBean> bookBeans;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_manager);
+        String bookName = getIntent().getStringExtra("bookName");
+        bookBeans = DBManager.findBookByLikeName(bookName);
         title = findViewById(R.id.app_title);
         addUser = findViewById(R.id.add_user);
         manager = findViewById(R.id.book_manager);
-
         title.setText(getTitle());
-        addUser.setVisibility(View.VISIBLE);
-
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        allBook = DBManager.findAllBook();
         initView();
         initListener();
     }
 
     private void initView() {
 
-        manager.setAdapter(new BookAdapter(this,allBook));
+        manager.setAdapter(new BookAdapter(this,bookBeans));
         manager.setOnItemClickListener(this);
     }
 
@@ -57,7 +54,8 @@ public class BookManagerActivity extends BaseActivity implements View.OnClickLis
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(this, BookDetailsActivity.class);
-        intent.putExtra("bookName", allBook.get(position).getBookname());
+        intent.putExtra("bookName", bookBeans.get(position).getBookname());
+        intent.putExtra("choose", "choose");
         startActivity(intent);
     }
 
@@ -66,6 +64,7 @@ public class BookManagerActivity extends BaseActivity implements View.OnClickLis
         switch (v.getId()) {
             case R.id.add_user:
                 Intent intent = new Intent(this, BookCreateActivity.class);
+
                 startActivity(intent);
                 break;
         }

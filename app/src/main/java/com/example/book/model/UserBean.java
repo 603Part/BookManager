@@ -59,19 +59,8 @@ public class UserBean {
     }
 
     public String getRole() {
-        String returnRole = "学生";
-        switch (role) {
-            case "1":
-                returnRole = "系统管理员";
-                break;
-            case "2":
-                returnRole = "图书管理员";
-                break;
-            case "3":
-                returnRole = "学生";
-                break;
-        }
-        return returnRole;
+
+        return role;
     }
 
     public void setRole(String role) {

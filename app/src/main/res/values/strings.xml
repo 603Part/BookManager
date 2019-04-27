@@ -12,4 +12,13 @@
     <string name="gender">性别:%1$s</string>
     <string name="role">角色:%1$s</string>
     <string name="phone">电话:%1$s</string>
+    <string name="book_name">书名:%1$s</string>
+    <string name="author_name">作者:%1$s</string>
+    <string name="press_name">出版社:%1$s</string>
+    <string name="ISBN">ISBN:%1$s</string>
+    <string name="count">数量:%1$s</string>
+    <string name="sur">剩余:%1$s</string>
+    <string name="notice">公告：%1$s</string>
+    <string name="message">留言：%1$s</string>
+    <string name="reply">回复：%1$s</string>
 </resources>

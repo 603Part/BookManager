@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/title_layout" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="内容"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:textSize="13.5sp"
+        android:layout_marginTop="30dp"
+        />
+    <EditText
+        android:id="@+id/message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:textColor="@color/textColor"
+        android:textColorHint="@color/tv_second_light_gray"
+        android:textCursorDrawable="@drawable/shp_cursor"
+        android:hint="内容"
+        android:textSize="13.5sp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="回复"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:textSize="13.5sp"
+        android:layout_marginTop="30dp"
+        />
+    <EditText
+        android:id="@+id/reply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:textColor="@color/textColor"
+        android:textColorHint="@color/tv_second_light_gray"
+        android:textCursorDrawable="@drawable/shp_cursor"
+        android:hint="等待回复"
+        android:textSize="13.5sp"
+        />
+
+
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_below="@+id/login_line"
+        android:layout_alignStart="@+id/login_line"
+        android:layout_alignLeft="@+id/login_line"
+        android:layout_alignEnd="@+id/login_line"
+        android:layout_alignRight="@+id/login_line"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/shp_login"
+        android:gravity="center"
+        android:text="回复"
+        android:textColor="@color/white"
+        android:textSize="13sp" />
+
+</LinearLayout>

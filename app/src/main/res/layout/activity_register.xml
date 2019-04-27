@@ -1,8 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
+
 
     <include layout="@layout/title_layout" />
     <TextView
@@ -15,54 +17,47 @@
         android:layout_marginTop="30dp"
         />
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/ed_update_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:maxLength="11"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:textColor="@color/textColor"
         android:textColorHint="@color/tv_second_light_gray"
         android:textCursorDrawable="@drawable/shp_cursor"
         android:hint="用户名"
+        android:digits="1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
         android:textSize="13.5sp"
         />
-
-    <LinearLayout
-        android:id="@+id/pwd_linear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="30dp"
-        android:visibility="gone"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="密码"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:textSize="13.5sp"
-
-            />
-        <EditText
-            android:id="@+id/pwd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:inputType="textPassword"
-            android:textColor="@color/textColor"
-            android:textColorHint="@color/tv_second_light_gray"
-            android:textCursorDrawable="@drawable/shp_cursor"
-            android:hint="密码"
-            android:textSize="13.5sp"
-            />
-    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="姓名"
+        android:text="密码"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:textSize="13.5sp"
+        android:layout_marginTop="30dp"
+        />
+    <EditText
+        android:id="@+id/pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLength="11"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:textColor="@color/textColor"
+        android:textColorHint="@color/tv_second_light_gray"
+        android:textCursorDrawable="@drawable/shp_cursor"
+        android:hint="密码"
+        android:textSize="13.5sp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="姓名："
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:textSize="13.5sp"
@@ -72,6 +67,7 @@
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:maxLength="11"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:textColor="@color/textColor"
@@ -80,7 +76,6 @@
         android:hint="姓名"
         android:textSize="13.5sp"
         />
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -138,24 +133,19 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/btn_save"
+        android:id="@+id/btn_update"
         android:layout_width="match_parent"
         android:layout_height="38dp"
+        android:layout_below="@+id/login_line"
+        android:layout_alignStart="@+id/login_line"
+        android:layout_alignLeft="@+id/login_line"
+        android:layout_alignEnd="@+id/login_line"
+        android:layout_alignRight="@+id/login_line"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
         android:background="@drawable/shp_login"
-        android:layout_margin="10dp"
         android:gravity="center"
-        android:text="保存更改"
-        android:textColor="@color/white"
-        android:textSize="13sp" />
-
-    <Button
-        android:id="@+id/btn_delete"
-        android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:background="@drawable/shp_delete"
-        android:layout_margin="10dp"
-        android:gravity="center"
-        android:text="删除用户"
+        android:text="创建用户"
         android:textColor="@color/white"
         android:textSize="13sp" />
 

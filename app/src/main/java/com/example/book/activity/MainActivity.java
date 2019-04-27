@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.example.book.R;
 import com.example.book.adapter.HomeAdapter;
+import com.example.book.model.HomeItem;
 import com.example.book.utils.ModuleUtils;
 import com.stx.xhb.xbanner.XBanner;
 
@@ -33,23 +34,14 @@ public class MainActivity extends AppCompatActivity
     private String id;
     private String name;
     private String roleName;
+    private String username;
+    private List<HomeItem> allModule;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initView();
-
-        id = getIntent().getStringExtra("id");
-        name = getIntent().getStringExtra("name");
-        roleName = getIntent().getStringExtra("role");
-        title.setText(name);
-        role.setText(roleName);
-        initData();
-    }
-
-    private void initView() {
 
         gridView = findViewById(R.id.main_gv);
         banner_1 = findViewById(R.id.banner_1);
@@ -62,9 +54,6 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        HomeAdapter homeAdapter = new HomeAdapter(ModuleUtils.getAllModule());
-        gridView.setAdapter(homeAdapter);
-        gridView.setOnItemClickListener(this);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View headerView = navigationView.getHeaderView(0);
@@ -72,8 +61,46 @@ public class MainActivity extends AppCompatActivity
         title = headerView.findViewById(R.id.bar_title);
         role = headerView.findViewById(R.id.role);
 
-        title.setText("张三");
-        role.setText("学生");
+        id = getIntent().getStringExtra("id");
+        name = getIntent().getStringExtra("name");
+        roleName = getIntent().getStringExtra("role");
+        username = getIntent().getStringExtra("username");
+        title.setText(name);
+        role.setText(roleName);
+        initView();
+        initData();
+    }
+
+    private void initView() {
+
+
+
+        checkModule();
+
+        HomeAdapter homeAdapter = new HomeAdapter(allModule);
+        gridView.setAdapter(homeAdapter);
+        gridView.setOnItemClickListener(this);
+
+
+
+
+    }
+
+    private void checkModule() {
+        switch (roleName) {
+            case "系统管理员":
+                allModule = ModuleUtils.admin();
+                break;
+            case "图书管理员":
+                allModule = ModuleUtils.book();
+                break;
+            case "学生":
+                allModule = ModuleUtils.student();
+                break;
+            default:
+                allModule = ModuleUtils.student();
+                break;
+        }
     }
 
     private void initData() {
@@ -107,8 +134,13 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_manage) {
-
+            Intent intent = new Intent(this,UserUpdateActivity.class);
+            intent.putExtra("from", "userSetting");
+            intent.putExtra("id", this.id);
+            startActivity(intent);
         } else if (id == R.id.nav_share) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
             finish();
         }
 
@@ -119,7 +151,10 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent = new Intent(this, ManagerActivity.class);
+        Intent intent = new Intent(this, allModule.get(position).getClazz());
+        intent.putExtra("userName", username);
+        intent.putExtra("role", roleName);
+        intent.putExtra("name", name);
         startActivity(intent);
     }
 }

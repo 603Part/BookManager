@@ -1,8 +1,10 @@
 package com.example.book.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -15,20 +17,22 @@ import com.example.book.model.UserBean;
 
 import java.util.List;
 
-public class ManagerActivity extends BaseActivity implements View.OnClickListener,AdapterView.OnItemClickListener{
+public class UserViewActivity extends BaseActivity implements View.OnClickListener,AdapterView.OnItemClickListener{
 
     private TextView title,addUser;
     private ListView manager;
     private List<UserBean> data;
+    private String choose;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager);
+        choose = getIntent().getStringExtra("choose");
         title = findViewById(R.id.app_title);
         addUser = findViewById(R.id.add_user);
         manager = findViewById(R.id.manager);
         title.setText(getTitle());
-        addUser.setVisibility(View.VISIBLE);
 
         addUser.setOnClickListener(this);
         manager.setOnItemClickListener(this);
@@ -55,9 +59,15 @@ public class ManagerActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent = new Intent(this,UserUpdateActivity.class);
-        intent.putExtra("id", data.get(position).getId());
-        startActivity(intent);
+        if (!TextUtils.isEmpty(choose)) {
+            Intent intent = new Intent();
+            intent.putExtra("username", data.get(position).getUsername());
+            intent.putExtra("name", data.get(position).getName());
+            setResult(Activity.RESULT_OK,intent);
+            finish();
+        }
+//        intent.putExtra("id", data.get(position).getId());
+//        startActivity(intent);
     }
 
     @Override

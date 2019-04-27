@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/book_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textColor="#777"
+        android:text="@string/book_name"
+        />
+
+    <TextView
+        android:id="@+id/author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textColor="#777"
+        android:text="@string/author_name"
+        />
+
+    <TextView
+        android:id="@+id/press"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/press_name"
+        android:textColor="#777"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:id="@+id/isbn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textColor="#777"
+        android:text="@string/ISBN"
+        />
+
+    <TextView
+        android:id="@+id/count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/count"
+        android:textColor="#777"
+        android:layout_marginTop="5dp"
+        />
+
+    <TextView
+        android:id="@+id/sur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sur"
+        android:textColor="#777"
+        android:layout_marginTop="5dp" />
+</LinearLayout>
